@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef } from "react";
-import { useLocation, useParams, Link } from "react-router-dom";
+import { useState, useEffect, useRef, Suspense } from "react";
+import { useLocation, useParams, Link, Outlet } from "react-router-dom";
 import { fetchMovie } from "service/movie-service";
 import MovieInfo from "../components/MovieInfo/MovieInfo"
 
@@ -44,14 +44,14 @@ const MovieDetails = () => {
                             <Link to="cast">Cast</Link>
                         </li>
                         <li>
-                            <Link to="reviews">Reviews</Link>
+                            <Link to='reviews'>Reviews</Link>
                         </li>
                     </ul>
                 </div>
             )}
-            {/* <Suspense fallback={<div>loading ...</div>}>
+            <Suspense fallback={<div>loading ...</div>}>
                 <Outlet />
-            </Suspense> */}
+            </Suspense>
         </>
     );
 };

@@ -20,3 +20,11 @@ export const fetchByName = async query => {
   const movies = transformMoviesData(data);
   return movies;
 };
+export const fetchCast = async id => {
+  const { data } = await axios.get(`/movie/${id}/credits`);
+  return data;
+};
+export const fetchReviews = async id => {
+  const { data } = await axios.get(`/movie/${id}/reviews`);
+  return data;
+};

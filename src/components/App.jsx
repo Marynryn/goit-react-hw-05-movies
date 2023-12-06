@@ -3,6 +3,10 @@ import Home from "pages/Home";
 import MovieDetails from "pages/MovieDetails";
 import MovieSearch from "pages/Movies";
 import Header from "./Header/Header";
+import Cast from "./Cast/Cast";
+import Reviews from "./Reviews/Reviews";
+
+
 export const App = () => {
   return (
     <div
@@ -15,21 +19,17 @@ export const App = () => {
         color: '#010101'
       }}
     >
-      <nav>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="movies">Movies</NavLink>
 
-
-      </nav>
       <Routes>
-        <Route path="/" element={<Header />} />
-        <Route index element={<Home />} />
-        <Route path="movies" element={<MovieSearch />} />
-        <Route path="movies/:movieId" element={<MovieDetails />} >
-          <Route path="cast" element={<div>Cast</div>} />
-          <Route path="reviews" element={<div>Reviews</div>} />
+        <Route path="/" element={<Header />} >
+          <Route index element={<Home />} />
+          <Route path="movies" element={<MovieSearch />} />
+          <Route path="movies/:movieId" element={<MovieDetails />} >
+            <Route path="cast" element={<Cast />} />
+            <Route path="reviews" element={<Reviews />} />
+          </Route>
+          {/* <Route path='*' element={<div><NotFound /></div>} /> */}
         </Route>
-        {/* <Route path='*' element={<div><NotFound /></div>} /> */}
       </Routes>
     </div>
   );
