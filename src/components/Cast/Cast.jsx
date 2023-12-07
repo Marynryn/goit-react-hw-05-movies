@@ -1,6 +1,7 @@
 import { fetchCast } from "service/movie-service";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { Grid, GridItem, Image, Text } from "./Cast.styled";
 
 
 const Cast = () => {
@@ -26,11 +27,11 @@ const Cast = () => {
         castInfo();
     }, [movieId])
     return (
-        <ul>
+        <Grid>
             {castInfo &&
                 castInfo.map(({ original_name, character, profile_path, id }) => (
-                    <li key={id}>
-                        <img
+                    <GridItem key={id}>
+                        <Image
                             src={
                                 profile_path
                                     ? `https://image.tmdb.org/t/p/w185${profile_path}`
@@ -39,11 +40,11 @@ const Cast = () => {
                             width={250}
                             alt={original_name}
                         />
-                        <p>{original_name}</p>
-                        <p>Character: {character}</p>
-                    </li>
+                        <Text>{original_name}</Text>
+                        <Text>Character: {character}</Text>
+                    </GridItem>
                 ))}
-        </ul>
+        </Grid>
     );
 };
 

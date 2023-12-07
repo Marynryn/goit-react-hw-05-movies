@@ -4,7 +4,7 @@ import SearchForm from 'components/SearchForm/SearchForm'
 import MoviesList from 'components/MovieList/MovieList';
 import { fetchByName } from './../service/movie-service';
 
-const MovieSearch = () => {
+const Movies = () => {
     const [movies, setMovies] = useState(null);
     const [error, setError] = useState('');
     const [params, setParams] = useSearchParams();
@@ -43,4 +43,4 @@ const MovieSearch = () => {
         </section>
     );
 };
-export default MovieSearch
+export default Movies;

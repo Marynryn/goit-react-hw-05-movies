@@ -2,6 +2,34 @@ import { useState, useEffect, useRef, Suspense } from "react";
 import { useLocation, useParams, Link, Outlet } from "react-router-dom";
 import { fetchMovie } from "service/movie-service";
 import MovieInfo from "../components/MovieInfo/MovieInfo"
+import { Grid, GridItem, Button, Heading } from "./MovieDetails.styled";
+import { Container } from "components/Header/Header.styled";
+import styled from "styled-components";
+
+
+export const LinkStyled = styled(Link)`
+  color: black;
+  font-size: 24px;
+  font-weight: 400;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition-property: color, background-color, transform;
+  transition-duration: 0.2s;
+  transition-timing-function: cubicBezier;
+  transform: scale(0.9);
+  &:hover,
+  &:focus {
+    color:grey;
+  } 
+   &.active {
+    color: white;
+    background-color: #27ad0c;
+    padding: 6px 12px;
+    border-radius: 4%;
+    transform: scale(1);
+    pointer-events: none;
+  }
+`;
 
 const MovieDetails = () => {
 
@@ -30,24 +58,24 @@ const MovieDetails = () => {
     return (
         <>
             {movieInfo && (
-                <div>
-                    <button type="button">
+                <Container>
+                    <Button type="button">
                         {' '}
-                        <Link to={backLinkLocationRef.current}>Go back</Link>
-                    </button>
+                        <LinkStyled to={backLinkLocationRef.current}>Go back</LinkStyled>
+                    </Button>
 
                     <MovieInfo movieInfo={movieInfo} />
 
-                    <h4>Additional information</h4>
-                    <ul>
-                        <li>
-                            <Link to="cast">Cast</Link>
-                        </li>
-                        <li>
-                            <Link to='reviews'>Reviews</Link>
-                        </li>
-                    </ul>
-                </div>
+                    <Heading>Additional information</Heading>
+                    <Grid>
+                        <GridItem>
+                            <LinkStyled to="cast">Cast</LinkStyled>
+                        </GridItem>
+                        <GridItem>
+                            <LinkStyled to='reviews'>Reviews</LinkStyled>
+                        </GridItem>
+                    </Grid>
+                </Container>
             )}
             <Suspense fallback={<div>loading ...</div>}>
                 <Outlet />

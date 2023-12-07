@@ -1,22 +1,24 @@
-// import { MovieDetails } from "pages/MovieDetails";
+
 import { Link } from "react-router-dom";
+import { Grid, GridItem } from "./MovieList.styled";
+
 
 const MoviesList = ({ movies, location }) => {
 
 
     return (
-        <ul>
+        <Grid>
             {movies.map(({ id, name, image }) => {
 
                 return (
-                    <li key={id}>
-                        <Link to={`/movies/${id}`} state={{ from: location }}>{name}
+                    <GridItem key={id}>
+                        <Link to={`/movies/${id}`} style={{ textDecoration: "none", color: "black" }} state={{ from: location }}>{name}
 
                         </Link>
-                    </li>
+                    </GridItem>
                 );
             })}
-        </ul>
+        </Grid>
     );
 };
 

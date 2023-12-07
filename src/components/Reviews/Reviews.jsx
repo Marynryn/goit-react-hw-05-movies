@@ -1,6 +1,7 @@
 import { fetchReviews } from "service/movie-service";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { Grid, GridItem, Text, Heading2 } from "./Reviews.styled";
 
 
 const Reviews = () => {
@@ -23,14 +24,14 @@ const Reviews = () => {
     return (
         <div>
             {reviews ? (
-                <ul>
+                <Grid>
                     {reviews.map(({ id, author, content }) => (
-                        <li key={id}>
-                            <h3>Author:{author}</h3>
-                            <p>{content}</p>
-                        </li>
+                        <GridItem key={id}>
+                            <Heading2>{author}</Heading2>
+                            <Text>{content}</Text>
+                        </GridItem>
                     ))}
-                </ul>
+                </Grid>
             ) : (
                 <p>We don't have any reviews for this movie</p>
             )}

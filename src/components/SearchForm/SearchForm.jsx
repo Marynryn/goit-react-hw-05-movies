@@ -1,6 +1,6 @@
-
+import { Btn, Form, Input } from "./SearchForm.styled";
 import { useState } from "react";
-
+import { Container } from "pages/Home.styled";
 const SearchForm = ({ onSubmit }) => {
     const [query, setQuery] = useState('');
 
@@ -18,10 +18,10 @@ const SearchForm = ({ onSubmit }) => {
     };
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
+        <Container>
+            <Form onSubmit={handleSubmit}>
                 <label>
-                    <input
+                    <Input
                         onChange={handleChange}
                         aria-label="select"
                         className="input"
@@ -32,11 +32,11 @@ const SearchForm = ({ onSubmit }) => {
                         value={query}
                     />
                 </label>
-                <button type="submit">Search</button>
+                <Btn type="submit">Search</Btn>
 
-            </form >
+            </Form >
 
-        </div>
+        </Container>
     );
 };
 export default SearchForm;

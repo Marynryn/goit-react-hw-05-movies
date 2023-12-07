@@ -1,5 +1,5 @@
 import { percent } from "helpers";
-
+import { ContainerImg, ContainerInfo, Image, Heading, Text, Heading2, Grid, GridItem } from "./MovieInfo.styled";
 
 const MovieInfo = ({ movieInfo }) => {
 
@@ -8,26 +8,26 @@ const MovieInfo = ({ movieInfo }) => {
 
 
     return (
-        <div>
-            <img
+        <ContainerImg>
+            <Image
                 src={`https://image.tmdb.org/t/p/w300${poster_path}`}
                 alt={original_title}
             />
-            <div>
-                <h2>{original_title}</h2>
-                <p>User Score {percent(vote_average)}%</p>
-                <h3>Overview</h3>
-                <p>{overview}</p>
-                <h3>Genres</h3>
-                <ul>
+            <ContainerInfo>
+                <Heading>{original_title}</Heading>
+                <Text>User Score {percent(vote_average)}%</Text>
+                <Heading2>Overview</Heading2>
+                <Text>{overview}</Text>
+                <Heading2>Genres</Heading2>
+                <Grid>
                     {genres.map(({ name, id }) => (
-                        <li key={id}>
-                            <p>{name}</p>
-                        </li>
+                        <GridItem key={id}>
+                            <Text>{name}</Text>
+                        </GridItem>
                     ))}
-                </ul>
-            </div>
-        </div>
+                </Grid>
+            </ContainerInfo>
+        </ContainerImg>
     );
 };
 

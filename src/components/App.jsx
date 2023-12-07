@@ -1,12 +1,13 @@
-import { Route, Routes, NavLink } from "react-router-dom";
-import Home from "pages/Home";
-import MovieDetails from "pages/MovieDetails";
-import MovieSearch from "pages/Movies";
+import { Route, Routes } from "react-router-dom";
+import { lazy } from "react";
 import Header from "./Header/Header";
-import Cast from "./Cast/Cast";
-import Reviews from "./Reviews/Reviews";
 
 
+const Home = lazy(() => import("../pages/Home"));
+const MovieDetails = lazy(() => import("../pages/MovieDetails"))
+const Movies = lazy(() => import("../pages/Movies"))
+const Cast = lazy(() => import("../components/Cast/Cast"))
+const Reviews = lazy(() => import("../components/Reviews/Reviews"))
 export const App = () => {
   return (
     <div
@@ -23,12 +24,12 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<Header />} >
           <Route index element={<Home />} />
-          <Route path="movies" element={<MovieSearch />} />
+          <Route path="movies" element={<Movies />} />
           <Route path="movies/:movieId" element={<MovieDetails />} >
             <Route path="cast" element={<Cast />} />
             <Route path="reviews" element={<Reviews />} />
           </Route>
-          {/* <Route path='*' element={<div><NotFound /></div>} /> */}
+          <Route path='*' element={<div><Home /></div>} />
         </Route>
       </Routes>
     </div>
