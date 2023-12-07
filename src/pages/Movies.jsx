@@ -6,7 +6,6 @@ import { fetchByName } from './../service/movie-service';
 
 const Movies = () => {
     const [movies, setMovies] = useState(null);
-    const [error, setError] = useState('');
     const [params, setParams] = useSearchParams();
     const location = useLocation();
     useEffect(() => {
@@ -18,7 +17,7 @@ const Movies = () => {
             try {
                 setMovies(movie);
             } catch (error) {
-                setError(error.message);
+
             }
         };
         getMovie();
