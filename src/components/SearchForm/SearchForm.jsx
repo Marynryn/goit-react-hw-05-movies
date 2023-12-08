@@ -1,6 +1,6 @@
 import { Btn, Form, Input } from "./SearchForm.styled";
 import { useState } from "react";
-import { Container } from "pages/Home.styled";
+import { Container } from "pages/Home/Home.styled";
 const SearchForm = ({ onSubmit }) => {
     const [query, setQuery] = useState('');
 

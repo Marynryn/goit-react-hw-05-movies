@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, Suspense } from "react";
 import { useLocation, useParams, Link, Outlet } from "react-router-dom";
 import { fetchMovie } from "service/movie-service";
-import MovieInfo from "../components/MovieInfo/MovieInfo"
+import MovieInfo from "../../components/MovieInfo/MovieInfo"
 import { Grid, GridItem, Button, Heading } from "./MovieDetails.styled";
 import { Container } from "components/Header/Header.styled";
 import styled from "styled-components";

@@ -27,24 +27,30 @@ const Cast = () => {
         castInfo();
     }, [movieId])
     return (
-        <Grid>
-            {castInfo &&
-                castInfo.map(({ original_name, character, profile_path, id }) => (
-                    <GridItem key={id}>
-                        <Image
-                            src={
-                                profile_path
-                                    ? `https://image.tmdb.org/t/p/w185${profile_path}`
-                                    : defaultImg
-                            }
-                            width={250}
-                            alt={original_name}
-                        />
-                        <Text>{original_name}</Text>
-                        <Text>Character: {character}</Text>
-                    </GridItem>
-                ))}
-        </Grid>
+        <div>
+            {castInfo ?
+                (<Grid>
+                    {castInfo.map(({ original_name, character, profile_path, id }) => (
+                        <GridItem key={id}>
+                            <Image
+                                src={
+                                    profile_path
+                                        ? `https://image.tmdb.org/t/p/w185${profile_path}`
+                                        : defaultImg
+                                }
+                                width={250}
+                                alt={original_name}
+                            />
+                            <Text>{original_name}</Text>
+                            <Text>Character: {character}</Text>
+                        </GridItem>
+                    ))}
+                </Grid>
+                ) : (
+                    <p>We don't have any cast for this movie</p>
+                )
+            }
+        </div>
     );
 };
 

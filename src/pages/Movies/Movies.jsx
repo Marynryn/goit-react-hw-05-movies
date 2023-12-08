@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useSearchParams, useLocation } from 'react-router-dom';
 import SearchForm from 'components/SearchForm/SearchForm'
 import MoviesList from 'components/MovieList/MovieList';
-import { fetchByName } from './../service/movie-service';
+import { fetchByName } from '../../service/movie-service';
 
 const Movies = () => {
     const [movies, setMovies] = useState(null);
